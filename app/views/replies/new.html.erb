@@ -1,0 +1,10 @@
+<%=form_for @reply, url: {action: "create"} do |f| %>
+<%=f.label :title %>
+<%=f.text_field :title %>
+<br><br>
+<%=f.label :body %>
+<%=f.text_field :body %>
+<br><br>
+%
+<%=f.submit "Post reply" %> 
+<% end %>

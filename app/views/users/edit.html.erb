@@ -1,0 +1,17 @@
+<h3>Edit Account</h3>
+
+<%= form_for @user, url: {action: "update"} do |f| %>
+  <%=f.label :name %>
+  <%=f.text_field :name %>
+  <br><br>
+  <%=f.label :email %>
+  <%=f.text_field :email %>
+  <br><br>
+  <%=f.label :password %>
+  <%=f.text_field :password %>
+  <br><br>
+  <%=f.label :password_confirmation %>
+  <%=f.text_field :password_confirmation %>
+  <br><br>
+  <%= f.submit "Update Account" %>
+<% end %>

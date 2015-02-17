@@ -1,0 +1,27 @@
+<h3><%= @topic.title %> <span style= "font-size:75%"><i> posted by <%= link_to @user.name, user_path(@user) %></i></span></h3>
+
+<% @topic.replies.each do |reply| %>
+  <p>
+    <strong>Reply: </strong><%= reply.body %>
+  </p>
+  <p>
+    <i>Posted <%= time_ago_in_words(reply.created_at) %> ago by <%= reply.user.name %>.</i>
+  </p>
+<% end %>
+
+<% if current_user %>
+  <h4>Reply to this thread:</h4>
+    <%=form_for([@topic, @topic.replies.build]) do |f| %>
+    <%=f.hidden_field :user_id, :value => current_user.id %>
+    <p>
+      <%=f.text_area :body %>
+    </p>
+    <p>
+      <%=f.submit %>
+    </p>
+    <p><%= link_to "Back to all topics.", topics_path %></p>
+    <p><%= link_to "Log out", log_out_path %></p>
+    <% end %>
+<% else %>
+  <p>You must have an account to post in the forum. <%= link_to "Sign up", new_user_path %> to get started, or <%= link_to "log in", log_in_path %>.</p>
+<% end %>

@@ -1,0 +1,8 @@
+<h3>Post a new topic.</h3>
+<%=form_for @topic, url: {action: "create"} do |f| %>
+<%=f.label :title %>
+<%=f.text_field :title %>
+<br><br>
+<%=f.submit "Post topic" %>
+<% end %>
+

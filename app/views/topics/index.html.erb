@@ -1,0 +1,17 @@
+<h1>The Forum</h1>
+
+<h3>Topics</h3>
+<ul>
+<% @topics.each do |topic| %>
+  <li><%= link_to topic.title, topic_path(topic) %></li>
+<% end %>
+</ul>
+<br><br>
+
+<% if current_user %>
+  <p>Go to <%= link_to "your page", user_path(current_user) %>.</p>
+  <p><%= link_to "Log out.", log_out_path %></p>
+<% else %>
+  <p><%= link_to "Sign up", new_user_path %>.</p>
+  <p><%= link_to "Log in", log_in_path %>.</p>
+<% end %>
